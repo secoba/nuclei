@@ -21,9 +21,9 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/projectdiscovery/clistats v0.0.20
 	github.com/projectdiscovery/fastdialer v0.0.71
-	github.com/projectdiscovery/hmap v0.0.41
+	github.com/projectdiscovery/hmap v0.0.42
 	github.com/projectdiscovery/interactsh v1.1.9
-	github.com/projectdiscovery/rawhttp v0.1.47
+	github.com/projectdiscovery/rawhttp v0.1.49
 	github.com/projectdiscovery/retryabledns v1.0.59
 	github.com/projectdiscovery/retryablehttp-go v1.0.60
 	github.com/projectdiscovery/yamldoc-go v1.0.4
@@ -78,24 +78,24 @@ require (
 	github.com/mholt/archiver v3.1.1+incompatible
 	github.com/ory/dockertest/v3 v3.10.0
 	github.com/praetorian-inc/fingerprintx v1.1.9
-	github.com/projectdiscovery/dsl v0.0.52
+	github.com/projectdiscovery/dsl v0.0.56
 	github.com/projectdiscovery/fasttemplate v0.0.2
 	github.com/projectdiscovery/go-smb2 v0.0.0-20240129202741-052cc450c6cb
-	github.com/projectdiscovery/goflags v0.1.50
+	github.com/projectdiscovery/goflags v0.1.52
 	github.com/projectdiscovery/gologger v1.1.12
 	github.com/projectdiscovery/gostruct v0.0.2
 	github.com/projectdiscovery/gozero v0.0.2
-	github.com/projectdiscovery/httpx v1.6.0
+	github.com/projectdiscovery/httpx v1.3.8-0.20240514101209-242fd734f9f1
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/n3iwf v0.0.0-20230523120440-b8cd232ff1f5
-	github.com/projectdiscovery/ratelimit v0.0.39
+	github.com/projectdiscovery/ratelimit v0.0.40
 	github.com/projectdiscovery/rdap v0.9.1-0.20221108103045-9865884d1917
 	github.com/projectdiscovery/sarif v0.0.1
 	github.com/projectdiscovery/tlsx v1.1.6
 	github.com/projectdiscovery/uncover v1.0.7
 	github.com/projectdiscovery/useragent v0.0.49
 	github.com/projectdiscovery/utils v0.0.92
-	github.com/projectdiscovery/wappalyzergo v0.0.122
+	github.com/projectdiscovery/wappalyzergo v0.0.123-0.20240514100706-b8f932b24389
 	github.com/redis/go-redis/v9 v9.1.0
 	github.com/seh-msft/burpxml v1.0.1
 	github.com/stretchr/testify v1.9.0

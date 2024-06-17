@@ -20,11 +20,11 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pkg/errors v0.9.1
 	github.com/projectdiscovery/clistats v0.0.20
-	github.com/projectdiscovery/fastdialer v0.1.4-0.20240611222741-427bffb2ea13
-	github.com/projectdiscovery/hmap v0.0.46
+	github.com/projectdiscovery/fastdialer v0.1.5
+	github.com/projectdiscovery/hmap v0.0.47
 	github.com/projectdiscovery/interactsh v1.2.0
-	github.com/projectdiscovery/rawhttp v0.1.51
-	github.com/projectdiscovery/retryabledns v1.0.63
+	github.com/projectdiscovery/rawhttp v0.1.52
+	github.com/projectdiscovery/retryabledns v1.0.64
 	github.com/projectdiscovery/retryablehttp-go v1.0.64
 	github.com/projectdiscovery/yamldoc-go v1.0.4
 	github.com/remeh/sizedwaitgroup v1.0.0
@@ -85,7 +85,7 @@ require (
 	github.com/projectdiscovery/gologger v1.1.12
 	github.com/projectdiscovery/gostruct v0.0.2
 	github.com/projectdiscovery/gozero v0.0.2
-	github.com/projectdiscovery/httpx v1.6.3
+	github.com/projectdiscovery/httpx v1.6.4-0.20240617162513-355814014a92
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/n3iwf v0.0.0-20230523120440-b8cd232ff1f5
 	github.com/projectdiscovery/ratelimit v0.0.45
@@ -124,7 +124,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.14.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
-	github.com/bits-and-blooms/bitset v1.8.0 // indirect
+	github.com/bits-and-blooms/bitset v1.13.0 // indirect
 	github.com/bits-and-blooms/bloom/v3 v3.5.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
@@ -284,7 +284,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/projectdiscovery/blackrock v0.0.1 // indirect
-	github.com/projectdiscovery/networkpolicy v0.0.8
+	github.com/projectdiscovery/networkpolicy v0.0.9
 	github.com/rivo/uniseg v0.4.6 // indirect
 	github.com/saintfish/chardet v0.0.0-20230101081208-5e3ef4b5456d // indirect
 	github.com/tklauser/go-sysconf v0.3.12 // indirect

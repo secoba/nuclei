@@ -23,9 +23,9 @@ require (
 	github.com/projectdiscovery/fastdialer v0.1.5
 	github.com/projectdiscovery/hmap v0.0.47
 	github.com/projectdiscovery/interactsh v1.2.0
-	github.com/projectdiscovery/rawhttp v0.1.52
+	github.com/projectdiscovery/rawhttp v0.1.54
 	github.com/projectdiscovery/retryabledns v1.0.64
-	github.com/projectdiscovery/retryablehttp-go v1.0.64
+	github.com/projectdiscovery/retryablehttp-go v1.0.65
 	github.com/projectdiscovery/yamldoc-go v1.0.4
 	github.com/remeh/sizedwaitgroup v1.0.0
 	github.com/rs/xid v1.5.0
@@ -85,7 +85,7 @@ require (
 	github.com/projectdiscovery/gologger v1.1.12
 	github.com/projectdiscovery/gostruct v0.0.2
 	github.com/projectdiscovery/gozero v0.0.2
-	github.com/projectdiscovery/httpx v1.6.4-0.20240617162513-355814014a92
+	github.com/projectdiscovery/httpx v1.6.4-0.20240617165032-72f4c2cef43b
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/n3iwf v0.0.0-20230523120440-b8cd232ff1f5
 	github.com/projectdiscovery/ratelimit v0.0.45
@@ -146,6 +146,7 @@ require (
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/free5gc/util v1.0.5-0.20230511064842-2e120956883b // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
+	github.com/gaissmai/bart v0.9.5 // indirect
 	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.9.1 // indirect

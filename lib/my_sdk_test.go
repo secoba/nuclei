@@ -2,6 +2,7 @@ package nuclei
 
 import (
 	"context"
+	"fmt"
 	"github.com/secoba/nuclei/v3/pkg/templates"
 	"testing"
 )
@@ -67,7 +68,7 @@ http:
 
 	// wait for all scans to finish
 	//sg.Wait()
-	err = ne.ExecuteNucleiWithOptsCtx2(context.Background(),
+	ret, err := ne.ExecuteNucleiWithOptsCtx2(context.Background(),
 		[]string{"http://zs1m.callback.red"},
 		[]*templates.Template{template},
 	)
@@ -75,5 +76,6 @@ http:
 		panic(err)
 	}
 
+	fmt.Println(ret)
 	defer ne.Close()
 }

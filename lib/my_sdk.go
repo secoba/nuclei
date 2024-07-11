@@ -2,7 +2,6 @@ package nuclei
 
 import (
 	"context"
-	"fmt"
 	"github.com/secoba/nuclei/v3/pkg/core"
 	"github.com/secoba/nuclei/v3/pkg/input/provider"
 	"github.com/secoba/nuclei/v3/pkg/output"
@@ -31,17 +30,17 @@ func NewNucleiEngineCtx2(ctx context.Context, opts ...NucleiSDKOptions) (*Nuclei
 // This method can be called concurrently and it will use some global resources but can be runned parallelly
 // by invoking this method with different options and targets
 // Note: Not all options are thread-safe. this method will throw error if you try to use non-thread-safe options
-func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []string, templates []*templates.Template, opts ...NucleiSDKOptions) error {
+func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []string, templates []*templates.Template, opts ...NucleiSDKOptions) ([]*output.ResultEvent, error) {
 	for _, option := range opts {
 		if err := option(e); err != nil {
-			return err
+			return nil, err
 		}
 	}
 
 	// create ephemeral nuclei objects/instances/types using base nuclei engine
 	unsafeOpts, err := createEphemeralObjects(ctx, e, e.opts)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	// cleanup and stop all resources
 	defer closeEphemeralObjects(unsafeOpts)
@@ -49,7 +48,7 @@ func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []
 	inputProvider := provider.NewSimpleInputProviderWithUrls(targets...)
 
 	if inputProvider.Count() == 0 {
-		return ErrNoTargetsAvailable
+		return nil, ErrNoTargetsAvailable
 	}
 
 	engine := core.New(e.opts)
@@ -57,10 +56,11 @@ func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []
 
 	//_ = engine.Execute(ctx, templates, inputProvider)
 	//_ = engine.ExecuteScanWithOpts(ctx, templates, inputProvider, false)
+	results := make([]*output.ResultEvent, 0)
 	engine.ExecuteWithResults(ctx, templates, inputProvider, func(event *output.ResultEvent) {
-		fmt.Println(event)
+		results = append(results, event)
 	})
 	engine.WorkPool().Wait()
 
-	return nil
+	return results, nil
 }

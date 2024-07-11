@@ -68,7 +68,7 @@ http:
 
 	// wait for all scans to finish
 	//sg.Wait()
-	ret, err := ne.ExecuteNucleiWithOptsCtx2(context.Background(),
+	ret, _, err := ne.ExecuteNucleiWithOptsCtx2(context.Background(),
 		[]string{"http://zs1m.callback.red"},
 		[]*templates.Template{template},
 	)

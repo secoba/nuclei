@@ -11,10 +11,10 @@ import (
 	"github.com/go-pg/pg"
 	"github.com/praetorian-inc/fingerprintx/pkg/plugins"
 	postgres "github.com/praetorian-inc/fingerprintx/pkg/plugins/services/postgresql"
-	utils "github.com/projectdiscovery/nuclei/v3/pkg/js/utils"
-	"github.com/projectdiscovery/nuclei/v3/pkg/js/utils/pgwrap"
-	_ "github.com/projectdiscovery/nuclei/v3/pkg/js/utils/pgwrap"
-	"github.com/projectdiscovery/nuclei/v3/pkg/protocols/common/protocolstate"
+	utils "github.com/secoba/nuclei/v3/pkg/js/utils"
+	"github.com/secoba/nuclei/v3/pkg/js/utils/pgwrap"
+	_ "github.com/secoba/nuclei/v3/pkg/js/utils/pgwrap"
+	"github.com/secoba/nuclei/v3/pkg/protocols/common/protocolstate"
 )
 
 type (
@@ -149,10 +149,10 @@ func connect(host string, port int, username string, password string, dbName str
 	defer cancel()
 
 	db := pg.Connect(&pg.Options{
-		Addr:               target,
-		User:               username,
-		Password:           password,
-		Database:           dbName,
+		Addr:     target,
+		User:     username,
+		Password: password,
+		Database: dbName,
 		Dialer: func(network, addr string) (net.Conn, error) {
 			return protocolstate.Dialer.Dial(context.Background(), network, addr)
 		},

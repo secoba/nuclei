@@ -129,8 +129,9 @@ func (e *Engine) executeTemplateWithTargets(ctx context.Context, template *templ
 				match = e.executeWorkflow(ctx, template.CompiledWorkflow)
 			default:
 				if e.Callback != nil {
-					if results, err := template.Executer.ExecuteWithResults(ctx); err != nil {
-						for _, result := range results {
+					rets, err1 := template.Executer.ExecuteWithResults(ctx)
+					if err1 == nil {
+						for _, result := range rets {
 							e.Callback(result)
 						}
 					}
@@ -158,7 +159,6 @@ func (e *Engine) executeTemplateWithTargets(ctx context.Context, template *templ
 // executeTemplatesOnTarget execute given templates on given single target
 func (e *Engine) executeTemplatesOnTarget(ctx context.Context, alltemplates []*templates.Template, target *contextargs.MetaInput, results *atomic.Bool) {
 	// all templates are executed on single target
-
 	// wp is workpool that contains different waitgroups for
 	// headless and non-headless templates
 	// global waitgroup should not be used here

@@ -157,7 +157,7 @@ func (e *NucleiEngine) initMy(ctx context.Context) error {
 	}
 
 	e.executerOpts = protocols.ExecutorOptions{
-		Output:          &MyWriter{},
+		Output:          e.customWriter,
 		Options:         e.opts,
 		Progress:        e.customProgress,
 		Catalog:         e.catalog,

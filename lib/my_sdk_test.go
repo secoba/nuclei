@@ -3,15 +3,14 @@ package nuclei
 import (
 	"context"
 	"fmt"
+	"github.com/secoba/nuclei/v3/pkg/input/provider"
+	"github.com/secoba/nuclei/v3/pkg/output"
 	"github.com/secoba/nuclei/v3/pkg/templates"
 	"testing"
 )
 
 func TestMulti(t *testing.T) {
-	ne, err := NewNucleiEngineCtx2(context.Background(),
-		//WithHeaders([]string{})
-		WithProxy([]string{"socks5://127.0.0.1:1080"}, false),
-	)
+	ne, err := NewNucleiEngineCtx2(context.Background())
 	if err != nil {
 		panic(err)
 	}
@@ -68,14 +67,23 @@ http:
 
 	// wait for all scans to finish
 	//sg.Wait()
-	ret, _, err := ne.ExecuteNucleiWithOptsCtx2(context.Background(),
-		[]string{"http://zs1m.callback.red"},
-		[]*templates.Template{template},
-	)
-	if err != nil {
-		panic(err)
-	}
 
-	fmt.Println(ret)
+	inputProvider := provider.NewSimpleInputProviderWithUrls([]string{"http://localhost:8000"}...)
+	ne.engine.ExecuteWithResults(context.Background(), []*templates.Template{template}, inputProvider, func(event *output.ResultEvent) {
+		fmt.Println(event.Request)
+		fmt.Println(event.Response)
+	})
+	//engine.Execute(ctx, templates, inputProvider)
+	ne.engine.WorkPool().Wait()
+
+	//ret, _, err := ne.ExecuteNucleiWithOptsCtx2(context.Background(),
+	//	[]string{"http://localhost:8000"},
+	//	[]*templates.Template{template},
+	//)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//fmt.Println(ret)
 	defer ne.Close()
 }

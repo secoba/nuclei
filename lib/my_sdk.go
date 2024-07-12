@@ -2,6 +2,7 @@ package nuclei
 
 import (
 	"context"
+	"fmt"
 	"github.com/secoba/nuclei/v3/pkg/core"
 	"github.com/secoba/nuclei/v3/pkg/input/provider"
 	"github.com/secoba/nuclei/v3/pkg/output"
@@ -11,9 +12,14 @@ import (
 
 func NewNucleiEngineCtx2(ctx context.Context, opts ...NucleiSDKOptions) (*NucleiEngine, error) {
 	// default options
+	out := &MyWriter{
+		resultEvents:  make([]*output.ResultEvent, 0),
+		failureEvents: make([]*output.InternalWrappedEvent, 0),
+	}
 	e := &NucleiEngine{
-		opts: types.DefaultOptions(),
-		mode: singleInstance,
+		opts:         types.DefaultOptions(),
+		mode:         singleInstance,
+		customWriter: out,
 	}
 	for _, option := range opts {
 		if err := option(e); err != nil {
@@ -52,8 +58,6 @@ func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []
 		return nil, nil, ErrNoTargetsAvailable
 	}
 
-	out := &MyWriter{}
-	e.executerOpts.Output = out
 	engine := core.New(e.opts)
 	engine.SetExecuterOptions(e.executerOpts)
 
@@ -65,10 +69,11 @@ func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []
 	//})
 
 	engine.ExecuteWithResults(ctx, templates, inputProvider, func(event *output.ResultEvent) {
-		out.Write(event)
+		fmt.Println(event)
 	})
 	//engine.Execute(ctx, templates, inputProvider)
 	engine.WorkPool().Wait()
 
-	return out.GetResults(), out.GetFailures(), nil
+	//return out.GetResults(), out.GetFailures(), nil
+	return nil, nil, err
 }

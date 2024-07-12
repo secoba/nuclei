@@ -64,7 +64,10 @@ func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []
 	//	results = append(results, event)
 	//})
 
-	engine.Execute(ctx, templates, inputProvider)
+	engine.ExecuteWithResults(ctx, templates, inputProvider, func(event *output.ResultEvent) {
+		out.Write(event)
+	})
+	//engine.Execute(ctx, templates, inputProvider)
 	engine.WorkPool().Wait()
 
 	return out.GetResults(), out.GetFailures(), nil

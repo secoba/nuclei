@@ -2,7 +2,6 @@ package nuclei
 
 import (
 	"context"
-	"fmt"
 	"github.com/secoba/nuclei/v3/pkg/core"
 	"github.com/secoba/nuclei/v3/pkg/input/provider"
 	"github.com/secoba/nuclei/v3/pkg/output"
@@ -68,12 +67,13 @@ func (e *NucleiEngine) ExecuteNucleiWithOptsCtx2(ctx context.Context, targets []
 	//	results = append(results, event)
 	//})
 
+	success := make([]*output.ResultEvent, 0)
 	engine.ExecuteWithResults(ctx, templates, inputProvider, func(event *output.ResultEvent) {
-		fmt.Println(event)
+		success = append(success, event)
 	})
 	//engine.Execute(ctx, templates, inputProvider)
 	engine.WorkPool().Wait()
 
 	//return out.GetResults(), out.GetFailures(), nil
-	return nil, nil, err
+	return success, nil, nil
 }
